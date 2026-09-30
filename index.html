@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SF ARM - منظومة أمنية متكاملة لحماية جهازك من الاختراق وبرمجيات الفدية.">
+    <title>SF ARM | المنظومة الأمنية الشاملة</title>
+    
+    <!-- خطوط عربية احترافية من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #06090e;
+            --surface-color: rgba(13, 22, 33, 0.6);
+            --border-color: rgba(16, 185, 129, 0.2);
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(2, 132, 199, 0.08), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        header { background: rgba(6, 9, 14, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--primary); }
+        .dev-badge { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+
+        .hero { padding: 160px 20px 100px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.3; margin-bottom: 20px; background: linear-gradient(to left, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; line-height: 1.7; }
+
+        .btn-download { display: inline-block; background: var(--primary); color: #000; padding: 16px 40px; font-size: 1.2rem; font-weight: 800; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 0 20px var(--primary-glow); }
+        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 0 30px var(--primary-glow); background: #0ea5e9; color: #fff; }
+        .btn-download i { margin-right: 8px; }
+        .version-info { display: block; margin-top: 15px; font-size: 0.9rem; color: var(--text-muted); }
+
+        .trust-bar { background: rgba(16, 185, 129, 0.05); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 30px 20px; margin: 60px 0; }
+        .trust-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .trust-item i { font-size: 1.8rem; color: var(--primary); }
+        .trust-item span { font-weight: 600; color: var(--text-main); }
+
+        .features { max-width: 1200px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--surface-color); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 35px 25px; border-radius: 20px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: right; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--border-color); background: rgba(13, 22, 33, 0.8); }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: inline-block; }
+        .feature-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); }
+        .feature-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+
+        /* ستايل قسم الدعم المادي */
+        .support-section { max-width: 800px; margin: 60px auto 40px; padding: 40px 30px; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 20px; text-align: center; backdrop-filter: blur(10px); position: relative; }
+        .support-section h2 { font-size: 2rem; color: var(--text-main); margin-bottom: 15px; }
+        .support-section h2 i { color: #f43f5e; margin-left: 8px; }
+        .support-section p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; }
+        .support-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        
+        .support-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 25px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; text-decoration: none; transition: 0.3s; color: #fff; cursor: pointer; border: none; font-family: 'Cairo', sans-serif; }
+        
+        .support-btn.crypto-bnb { background-color: #F3BA2F; color: #000; border: 1px solid #F3BA2F; }
+        .support-btn.crypto-bnb:hover { background-color: #dcb034; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(243, 186, 47, 0.4); }
+
+        .support-btn.crypto-eth { background-color: #627EEA; border: 1px solid #627EEA; }
+        .support-btn.crypto-eth:hover { background-color: #536bc9; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(98, 126, 234, 0.4); }
+
+        /* نافذة الكريبتو المنبثقة (QR Modal) */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content { background: var(--surface-color); border: 1px solid var(--border-color); padding: 40px 30px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.7); transform: translateY(-30px); transition: transform 0.3s ease; }
+        .modal.show .modal-content { transform: translateY(0); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: #f43f5e; }
+        
+        .qr-wrapper { background: #fff; padding: 15px; border-radius: 15px; display: inline-block; margin: 20px 0; }
+        .qr-wrapper img { display: block; width: 200px; height: 200px; }
+        .wallet-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.95rem; word-break: break-all; margin-bottom: 20px; color: var(--primary); user-select: all; }
+
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); margin-top: 20px; }
+        footer p { margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero { padding: 120px 20px 60px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .support-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-shield-halved"></i> SF ARM
+            </a>
+            <div class="dev-badge">
+                <i class="fa-solid fa-code"></i> تطوير: fouad
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>درعك الرقمي المنيع في عصر التهديدات السيبرانية</h1>
+        <p>المنظومة الأمنية المتكاملة لحماية جهازك من الاختراق، كشف متسللي الشبكة، صد برمجيات الفدية، وتسريع أداء النظام بضغطة زر. لا حاجة للإنترنت، لا نجمع بياناتك.</p>
+        
+        <!-- رابط التحميل -->
+        <a href="رابط_التحميل_تاعك_هنا" class="btn-download">
+            <i class="fa-solid fa-download"></i> تحميل البرنامج مجاناً
+        </a>
+        <span class="version-info">الإصدار المستقر: V12.5 | متوافق مع Windows 10/11</span>
+    </section>
+
+    <div class="trust-bar">
+        <div class="trust-content">
+            <div class="trust-item"><i class="fa-solid fa-user-shield"></i><span>خصوصية 100% (بدون تتبع)</span></div>
+            <div class="trust-item"><i class="fa-solid fa-ban"></i><span>غير ربحي وخالي من الإعلانات</span></div>
+            <div class="trust-item"><i class="fa-solid fa-bolt"></i><span>فحص محلي (Offline) سريع</span></div>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="feature-card"><i class="fa-solid fa-wifi feature-icon"></i><h3>رادار متسللي Wi-Fi</h3><p>كشف فوري لجميع الأجهزة المتصلة بالراوتر الخاص بك محلياً، مع عرض العناوين الفيزيائية (MAC) لكشف أي اختراق لشبكتك.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-bug-slash feature-icon"></i><h3>فخ برمجيات الفدية</h3><p>نظام إنذار مبكر ومصيدة ذكية توقف فيروسات التشفير وتدمرها في مهدها بمجرد محاولتها المساس بملفات النظام.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-network-wired feature-icon"></i><h3>جدار حماية المنافذ</h3><p>مراقبة حية للاتصالات وعزل فوري للمنافذ الخطيرة لمنع قراصنة الويب من التسلل لجهازك.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-microscope feature-icon"></i><h3>المختبر الجنائي للملفات</h3><p>تشريح البرامج المشبوهة واستخراج الروابط الخبيثة ومعامل التشفير منها بأمان تام ودون الحاجة لتشغيلها.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-user-secret feature-icon"></i><h3>فاحص تسريبات الويب المظلم</h3><p>تحقق آمن باستخدام خوارزميات التشفير لمعرفة ما إذا كانت كلمات مرورك قد سُربت في اختراقات سابقة.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-rocket feature-icon"></i><h3>معزز الأداء الفائق</h3><p>تنظيف ذكي للذاكرة العشوائية (RAM) الخاملة، ومسح مخلفات المتصفح، وإفراغ ذاكرة DNS لتجربة تصفح أسرع.</p></div>
+    </section>
+
+    <!-- قسم الدعم المادي -->
+    <section class="support-section">
+        <h2><i class="fa-solid fa-hand-holding-heart"></i> دعم تطوير المشروع</h2>
+        <p>برنامج SF ARM هو مشروع شخصي ومجاني بالكامل. يمكنك دعم المطور (fouad) مادياً للاستمرار في تحديثه وتطويره.</p>
+        
+        <div class="support-buttons">
+            <!-- أزرار تفتح النافذة المنبثقة -->
+            <button onclick="openQrModal('0x294Af02336D01FBD8a74BE1f6425C4e274AF0697', 'USDT (BNB Smart Chain)')" class="support-btn crypto-bnb">
+                <i class="fa-solid fa-wallet"></i> تبرع بـ USDT (BEP20)
+            </button>
+
+            <button onclick="openQrModal('0x45072cdc3b488bd1c042761af7607156349807d2', 'USDC (Ethereum)')" class="support-btn crypto-eth">
+                <i class="fa-brands fa-ethereum"></i> تبرع بـ USDC (ERC20)
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة لمشروع SF ARM © 2026</p>
+        <p style="font-size: 0.85rem; opacity: 0.7;">صُمم هذا البرنامج خصيصاً كأداة أمنية مجانية لدعم المجتمع.</p>
+    </footer>
+
+    <!-- النافذة المنبثقة (Modal) للـ QR والمحفظة -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            
+            <h3 id="modal-title" style="margin-bottom: 5px;">شبكة التحويل</h3>
+            <p style="font-size: 0.9rem; color: #f43f5e; font-weight: bold; margin-bottom: 10px;">⚠️ تأكد من إرسال العملة على الشبكة الصحيحة فقط</p>
+            
+            <!-- صورة الـ QR -->
+            <div class="qr-wrapper">
+                <img id="qr-img" src="" alt="QR Code">
+            </div>
+            
+            <!-- عنوان المحفظة -->
+            <div id="wallet-text" class="wallet-box"></div>
+            
+            <!-- زر النسخ من داخل النافذة -->
+            <button onclick="copyFromModal()" class="support-btn" style="width: 100%; background: var(--primary); color: #000;">
+                <i class="fa-solid fa-copy"></i> نسخ العنوان
+            </button>
+            
+            <p id="modal-copy-msg" style="display: none; color: var(--primary); font-weight: bold; margin-top: 15px; font-size: 1rem;"><i class="fa-solid fa-circle-check"></i> تم النسخ بنجاح!</p>
+        </div>
+    </div>
+
+    <!-- السكربت الخاص بالنافذة والنسخ -->
+    <script>
+        let currentWallet = "";
+
+        // فتح النافذة وتوليد الكود
+        function openQrModal(address, networkName) {
+            currentWallet = address;
+            document.getElementById("modal-title").innerText = `التبرع عبر ${networkName}`;
+            document.getElementById("wallet-text").innerText = address;
+            
+            // توليد صورة الـ QR ديناميكياً باستخدام API موثوق ومجاني
+            document.getElementById("qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${address}`;
+            
+            // إظهار النافذة
+            document.getElementById("qrModal").classList.add("show");
+        }
+
+        // إغلاق النافذة
+        function closeModal() {
+            document.getElementById("qrModal").classList.remove("show");
+            document.getElementById("modal-copy-msg").style.display = "none";
+        }
+
+        // إغلاق النافذة عند الضغط في أي مكان فارغ بالشاشة
+        window.onclick = function(event) {
+            const modal = document.getElementById("qrModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // دالة النسخ مع تجنب الحظر (Fallback)
+        function copyFromModal() {
+            function showSuccess() {
+                const msg = document.getElementById("modal-copy-msg");
+                msg.style.display = "block";
+                setTimeout(() => { msg.style.display = "none"; }, 4000);
+            }
+
+            function fallbackCopy(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.opacity = "0";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showSuccess();
+                } catch (err) {
+                    console.error('فشل النسخ الاحتياطي: ', err);
+                }
+                document.body.removeChild(textArea);
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentWallet).then(() => {
+                    showSuccess();
+                }).catch(() => {
+                    fallbackCopy(currentWallet);
+                });
+            } else {
+                fallbackCopy(currentWallet);
+            }
+        }
+    </script>
+
+</body>
+</html>
